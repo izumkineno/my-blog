@@ -46,7 +46,7 @@ A static blog template built with [Astro](https://astro.build).
 2. To edit your blog locally, clone your repository, run `pnpm install` to install dependencies.
     - Install [pnpm](https://pnpm.io) `npm install -g pnpm` if you haven't.
 3. Edit the config file `src/config.ts` to customize your blog.
-4. Run `pnpm new-post <filename>` to create a new post and edit it in `src/content/posts/`.
+4. Run `pnpm cms` for the local content UI, or `pnpm new-post <slug> [title]` to create a draft page bundle.
 5. Deploy your blog to Vercel, Netlify, GitHub Pages, etc. following [the guides](https://docs.astro.build/en/guides/deploy/). You need to edit the site configuration in `astro.config.mjs` before deployment.
 
 ## 📝 Frontmatter of Posts
@@ -84,7 +84,8 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm preview`             | Preview your build locally, before deploying        |
 | `pnpm check`               | Run checks for errors in your code                  |
 | `pnpm format`              | Format your code using Biome                        |
-| `pnpm new-post <filename>` | Create a new post                                   |
+| `pnpm new-post <slug> [title]` | Create a draft post page bundle                   |
+| `pnpm cms`                 | Start the local Sveltia CMS content UI               |
 | `pnpm astro ...`           | Run CLI commands like `astro add`, `astro check`    |
 | `pnpm astro --help`        | Get help using the Astro CLI                        |
 

@@ -1,0 +1,92 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms@0.182.0/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: izumkineno/my-blog
+  branch: main
+
+site_url: http://localhost:4321
+display_url: http://localhost:4321/my-blog/
+
+media_folder: /src/content/posts
+public_folder: /src/content/posts
+
+output:
+  omit_empty_optional_fields: true
+
+
+collections:
+  - name: posts
+    label: 文章
+    label_singular: 文章
+    icon: article
+    description: 管理博客文章、Frontmatter 和文章目录中的图片。
+    folder: src/content/posts
+    path: "{{slug}}/index"
+    slug: "{{fields._slug}}"
+    media_folder: ""
+    public_folder: ""
+    preview_path: "/my-blog/posts/{{slug}}/"
+    summary: "{{title}} · {{published}}"
+    sortable_fields:
+      fields: [published, updated, title, category]
+      default:
+        field: published
+        direction: descending
+    view_filters:
+      - label: 草稿
+        field: draft
+        pattern: true
+      - label: 已发布
+        field: draft
+        pattern: false
+    fields:
+      - name: title
+        label: 标题
+        widget: string
+        hint: 用于文章页、列表和默认 slug。
+      - name: published
+        label: 发布日期
+        widget: datetime
+        type: date
+        default: "{{now}}"
+      - name: updated
+        label: 更新日期
+        widget: datetime
+        type: date
+        required: false
+      - name: draft
+        label: 草稿
+        widget: boolean
+        default: true
+        hint: 草稿可在本地预览，但不会进入生产构建。
+      - name: description
+        label: 摘要
+        widget: text
+        required: false
+        maxlength: 300
+      - name: image
+        label: 封面
+        widget: image
+        required: false
+        hint: 图片保存在当前文章目录中。
+      - name: tags
+        label: 标签
+        widget: list
+        required: false
+      - name: category
+        label: 分类
+        widget: string
+        required: false
+      - name: lang
+        label: 内容语言
+        widget: string
+        required: false
+        default: zh_CN
+        hint: 例如 zh_CN、zh_TW、en 或 ja。
+      - name: body
+        label: 正文
+        widget: richtext
+        required: false
+        modes: [raw]
+        hint: 使用原始 Markdown 模式，避免改写数学公式、提示块和自定义指令。

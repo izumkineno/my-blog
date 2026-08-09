@@ -1,59 +1,54 @@
 /* This is a script to create a new post markdown file with front-matter */
 
-import fs from "fs"
-import path from "path"
+import fs from "node:fs";
+import path from "node:path";
 
 function getDate() {
-  const today = new Date()
-  const year = today.getFullYear()
-  const month = String(today.getMonth() + 1).padStart(2, "0")
-  const day = String(today.getDate()).padStart(2, "0")
+	const today = new Date();
+	const year = today.getFullYear();
+	const month = String(today.getMonth() + 1).padStart(2, "0");
+	const day = String(today.getDate()).padStart(2, "0");
 
-  return `${year}-${month}-${day}`
+	return `${year}-${month}-${day}`;
 }
 
-const args = process.argv.slice(2)
+const args = process.argv.slice(2);
 
 if (args.length === 0) {
-  console.error(`Error: No filename argument provided
-Usage: npm run new-post -- <filename>`)
-  process.exit(1) // Terminate the script and return error code 1
+	console.error(`错误：未提供文章 slug
+用法：pnpm new-post <slug> [标题]`);
+	process.exit(1);
 }
 
-let fileName = args[0]
-
-// Add .md extension if not present
-const fileExtensionRegex = /\.(md|mdx)$/i
-if (!fileExtensionRegex.test(fileName)) {
-  fileName += ".md"
+const slug = args[0];
+if (!/^[\p{L}\p{N}]+(?:-[\p{L}\p{N}]+)*$/u.test(slug)) {
+	console.error("错误：slug 只能包含字母、数字和用于分隔单词的连字符");
+	process.exit(1);
 }
 
-const targetDir = "./src/content/posts/"
-const fullPath = path.join(targetDir, fileName)
+const title = args.slice(1).join(" ") || slug;
+const targetDir = path.join("src", "content", "posts", slug);
+const fullPath = path.join(targetDir, "index.md");
 
 if (fs.existsSync(fullPath)) {
-  console.error(`Error: File ${fullPath} already exists `)
-  process.exit(1)
+	console.error(`错误：文章 ${fullPath} 已存在`);
+	process.exit(1);
 }
 
-// recursive mode creates multi-level directories
-const dirPath = path.dirname(fullPath)
-if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true })
-}
+fs.mkdirSync(targetDir, { recursive: true });
 
 const content = `---
-title: ${args[0]}
+title: ${JSON.stringify(title)}
 published: ${getDate()}
-description: ''
-image: ''
+description: ""
+image: ""
 tags: []
-category: ''
-draft: false 
-lang: ''
+category: ""
+draft: true
+lang: zh_CN
 ---
-`
+`;
 
-fs.writeFileSync(path.join(targetDir, fileName), content)
+fs.writeFileSync(fullPath, content, "utf8");
 
-console.log(`Post ${fullPath} created`)
+console.log(`已创建文章：${fullPath}`);

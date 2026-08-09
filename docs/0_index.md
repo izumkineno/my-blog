@@ -6,9 +6,9 @@
 
 | 文档 | 适用场景 | 内容 |
 | --- | --- | --- |
-| [开发环境与常用命令](./1-开发环境与常用命令.md) | 第一次运行项目 | Node.js、pnpm、安装、开发服务器和检查命令 |
+| [开发环境与常用命令](./1-开发环境与常用命令.md) | 第一次运行项目 | Node.js、pnpm、Astro、Sveltia CMS 和检查命令 |
 | [工程结构与模块职责](./2-工程结构与模块职责.md) | 定位代码和入口 | 目录职责、路由、数据流和路径别名 |
-| [文章与内容开发](./3-文章与内容开发.md) | 新建或编辑文章 | Frontmatter、文章目录、图片和 Markdown 扩展 |
+| [文章与内容开发](./3-文章与内容开发.md) | 新建或编辑文章 | Sveltia CMS、Frontmatter、文章目录、图片和 Markdown 扩展 |
 | [站点配置与主题定制](./4-站点配置与主题定制.md) | 修改站点外观和行为 | 站点、导航、个人资料、主题色、Banner 和 i18n |
 | [构建、检查与部署](./5-构建检查与部署.md) | 发布前检查或部署 | 构建产物、CI、站点 URL、静态部署和预览 |
 | [私人博客使用指南](./6-私人博客使用指南.md) | 将模板用于个人博客 | 初始化、配置、写作、草稿、发布、备份和隐私边界 |
@@ -31,7 +31,7 @@
 
 ## 工程概览
 
-- 技术栈：Astro 5、Svelte 5、Tailwind CSS 3、TypeScript 和 Biome。
+- 技术栈：Astro 5、Svelte 5、Sveltia CMS、Tailwind CSS 3、TypeScript 和 Biome。
 - 内容入口：`src/content/posts/` 中的 Markdown 文章。
 - 站点配置：`src/config.ts`。
 - 路由入口：`src/pages/`。

@@ -46,7 +46,7 @@ deno run -A npm:create-fuwari@latest
 ```
 
 1. 通过配置文件 `src/config.ts` 自定义博客
-2. 执行 `pnpm new-post <filename>` 创建新文章，并在 `src/content/posts/` 目录中编辑
+2. 执行 `pnpm cms` 使用本地内容管理界面，或执行 `pnpm new-post <slug> [标题]` 创建草稿文章
 3. 参考[官方指南](https://docs.astro.build/zh-cn/guides/deploy/)将博客部署至 Vercel, Netlify, GitHub Pages 等；部署前需编辑 `astro.config.mjs` 中的站点设置。
 
 ## 🚀 使用方法 2
@@ -56,7 +56,7 @@ deno run -A npm:create-fuwari@latest
    - 若未安装 [pnpm](https://pnpm.io)，执行 `npm install -g pnpm`
 
 3. 通过配置文件 `src/config.ts` 自定义博客
-4. 执行 `pnpm new-post <filename>` 创建新文章，并在 `src/content/posts/` 目录中编辑
+4. 执行 `pnpm cms` 使用本地内容管理界面，或执行 `pnpm new-post <slug> [标题]` 创建草稿文章
 5. 参考[官方指南](https://docs.astro.build/zh-cn/guides/deploy/)将博客部署至 Vercel, Netlify, GitHub Pages 等；部署前需编辑 `astro.config.mjs` 中的站点设置。
 
 ## ⚙️ 文章 Frontmatter
@@ -86,7 +86,8 @@ lang: jp      # Set only when the post language differs from the site language i
 | `pnpm type-check`         | 运行 TypeScript 声明检查                    |
 | `pnpm build`              | 构建网站并生成 Pagefind 搜索索引            |
 | `pnpm preview`            | 本地预览已构建的网站                        |
-| `pnpm new-post <filename>` | 创建新文章                                  |
+| `pnpm new-post <slug> [标题]` | 创建 page bundle 格式的草稿文章                  |
+| `pnpm cms`                | 启动 Sveltia CMS 本地内容管理界面                 |
 | `pnpm lint`               | 使用 Biome 检查并自动修复 `src/`            |
 | `pnpm format`             | 使用 Biome 格式化 `src/`                   |
 | `pnpm astro ...`           | 执行 Astro CLI 指令                         |
