@@ -21,7 +21,7 @@ export async function GET(context: APIContext) {
 
 	return rss({
 		title: siteConfig.title,
-		description: siteConfig.subtitle || "No description",
+		description: siteConfig.subtitle || "暂无简介",
 		site: new URL(url("/"), context.site ?? import.meta.env.SITE),
 		items: blog.map((post) => {
 			const content =
