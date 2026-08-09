@@ -2,7 +2,7 @@
 title: 68 元捡来一台阿里云 200 Mbps 小服务器：搭建 EasyTier 与 RustDesk 中继
 published: 2026-06-17
 updated: 2026-08-09
-draft: true
+draft: false
 description: 从 Sakura Frp 中转 EasyTier 的临时方案，折腾到用一台带独立公网 IP 的小服务器自建 EasyTier 组网节点和 RustDesk 中继。
 image: ./pasted-image-1786279521986.png
 tags:
