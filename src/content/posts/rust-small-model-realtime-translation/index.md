@@ -15,7 +15,7 @@ lang: zh_CN
 
 > 如果翻译本身不到 1 秒，是否可以把 **OCR 识别 + 翻译** 整条链路也控制在 1 秒内，做一套离线的、本地小模型实时翻译方案？
 
-于是有了 `smodeltrans`：一个用 Rust 跑小模型的 Windows 原生应用，`窗口捕获 → PP-OCR → Hy-MT2` 全链路本地推理，不依赖云端 API。项目已开源，核心链路在 `E:/Code/small_model/smodeltrans`，技术栈 `Tauri 2 + Vue 3 + Candle 0.11`。
+于是有了 `smodeltrans`：一个用 Rust 跑小模型的 Windows 原生应用，`窗口捕获 → PP-OCR → Hy-MT2` 全链路本地推理，不依赖云端 API。项目已开源：[izumkineno/smodeltrans](https://github.com/izumkineno/smodeltrans)，技术栈 `Tauri 2 + Vue 3 + Candle 0.11`。
 
 > [!NOTE]
 > 本文记录从模型选型、OCR 换代到工程化压测的过程。文中模型与速度均基于本地 CUDA 环境实测，不同显卡/驱动会有差异。
@@ -110,12 +110,13 @@ flowchart LR
 
 ## 下一步
 
-`smodeltrans` 接下来会继续在 `Rust + Candle + 本地小模型` 路线上迭代：更细的 ROI 策略、选区翻译的全局快捷键链路（已在 `docs/SELECTED_TEXT_TRANSLATION_RESEARCH.md` 调研 UI Automation + 剪贴板兼容方案）、以及 `simple_downloader` 的多源/代理下载能力开放。
+`smodeltrans` 接下来会继续在 `Rust + Candle + 本地小模型` 路线上迭代：更细的 ROI 策略、选区翻译的全局快捷键链路（已在 [docs/SELECTED_TEXT_TRANSLATION_RESEARCH.md](https://github.com/izumkineno/smodeltrans/blob/main/docs/SELECTED_TEXT_TRANSLATION_RESEARCH.md) 调研 UI Automation + 剪贴板兼容方案）、以及 `simple_downloader` 的多源/代理下载能力开放。
 
 如果你也在 Rust 侧玩小模型，欢迎直接看工程与文档：
 
-*   工程：`E:/Code/small_model/smodeltrans`
-*   链路详解：`docs/LIVE_OCR_PIPELINE.md`
-*   架构与下载器：`README.md` 与 `simple_downloader`
+*   工程：[izumkineno/smodeltrans](https://github.com/izumkineno/smodeltrans)
+*   链路详解：[docs/LIVE_OCR_PIPELINE.md](https://github.com/izumkineno/smodeltrans/blob/main/docs/LIVE_OCR_PIPELINE.md)
+*   架构与下载器：[README.md](https://github.com/izumkineno/smodeltrans) 与 `simple_downloader`
 
+实际工程与构建说明：<https://github.com/izumkineno/smodeltrans>
 本地、小、快，这三件事同时满足时，实时翻译才真正从“演示”变成“可用”。
