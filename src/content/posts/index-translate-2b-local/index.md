@@ -5,7 +5,7 @@ description: "在 smodeltrans 里接入第二个本地翻译模型 Index-Transla
 image: ""
 tags: [Rust, Candle, 小模型, Index-Translate, 推理优化, Tauri]
 category: AI 与本地模型
-draft: true
+draft: false
 lang: zh_CN
 ---
 
